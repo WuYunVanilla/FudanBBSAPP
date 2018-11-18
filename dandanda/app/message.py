@@ -10,3 +10,7 @@ REGISTER_MAIL_SENT = "mail_sent"
 MODIFY_PASSWORD_MAIL_SENT = "mail_sent"
 IGNORE = "ignore"
 CONFIRM = "confirm_ok"
+
+# about question and answer
+ADD_QUESTION_OK = "add_question_ok"
+ADD_ANSWER_OK = "add_answer_ok"

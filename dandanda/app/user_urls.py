@@ -2,7 +2,8 @@ import random
 import string
 
 from db.user_ops import UserOp
-from flask import request, render_template, url_for
+from db.qa_ops import QAOp
+from flask import request, render_template, url_for, jsonify
 from email import send_email
 
 from app import app, message as ms
@@ -26,7 +27,7 @@ def login():
     q_usr = UserOp.query(stdId)
     if q_usr == None:
         return ms.USER_NOT_EXIST
-    if q_usr.password == password:
+    if q_usr.password == password and q_usr.valid:
         return ms.LOGIN_OK
     else:
         return ms.PASSWORD_ERROR
@@ -79,6 +80,62 @@ def confirm(token, expiration=3600):
     print("in confirm: " + str(stdId))
     UserOp.confirm(stdId)
     return ms.CONFIRM
+
+
+@app.route('/homepage/')
+def home_page():
+    ret = {}
+    list1, list2 = QAOp.showQuestions(2)
+    for i in range(0, len(list2)):
+        dict = {}
+        q = list1[i]
+        dict.setdefault("questionId", q.id)
+        dict.setdefault("questioner", q.questioner)
+        dict.setdefault("title", q.title)
+        dict.setdefault("label", q.label)
+        dict.setdefault("description", q.description)
+        dict.setdefault("numFollowers", q.numFollowers)
+        dict.setdefault("numAnswers", q.numAnswers)
+        dict.setdefault("oneAnswer", list2[i])
+        ret.setdefault("question"+str(i), dict)
+    return jsonify(ret)
+
+
+@app.route('/add_question/')
+def add_question():
+    # get parameters......
+    # questioner, title, label, description, isPublished
+    # QAOp.insertQuestion("15302010051", "Who are ZhangJiang F4", "Fun", "Who are ZhangJiang F4", True)
+    QAOp.printQuestions()  # debug
+    return ms.ADD_QUESTION_OK
+
+
+@app.route('/answers_list/')
+def answers_list():
+    ret = {}
+    q_id = request.args.get('questionId')
+    list = QAOp.showAnswers(q_id)
+    for i in range(0, len(list)):
+        dict = {}
+        a = list[i]
+        dict.setdefault("answerId", a.id)
+        dict.setdefault("answerer", a.answerer)
+        dict.setdefault("content", a.content)
+        dict.setdefault("numAgree", a.numAgree)
+        dict.setdefault("numCollect", a.numCollect)
+        ret.setdefault("answer"+str(i), dict)
+    return jsonify(ret)
+
+
+@app.route('/add_answer/')
+def add_answer():
+    # get parameters......
+    # answerer, questionID, content
+    # QAOp.insertAnswer("15302010053", 1, "they are zhuyafang, fangruiyu, yuanliping and wuyun")
+    # QAOp.add_num_answers(1)
+    QAOp.printQuestions()  # debug
+    QAOp.printAnswers()  # debug
+    return ms.ADD_ANSWER_OK
 
 
 def sent_register_mail(stdId):
