@@ -17,8 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dandandateam.dandanda.Items.ProfileItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +30,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import static java.lang.String.valueOf;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -41,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_login) Button _loginButton;
     @BindView(R.id.link_signup) TextView _signupLink;
     @BindView(R.id.link_forgetPass) TextView _forgetPassLink;
+
+    private String stdid;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,12 +106,12 @@ public class LoginActivity extends AppCompatActivity {
             Log.d(TAG, "handler login: "+login_result);
 
             if(login_result!=null) {
-                if (login_result.equals("login_ok")) {
-                    onLoginSuccess();
-                } else if (login_result.equals("password_error")) {
+                if (login_result.equals("password_error")) {
                     onLoginFailed("密码错误");
                 } else if (login_result.equals("user_not_exist")) {
                     onLoginFailed("用户不存在，请先注册");
+                }else{
+                    onLoginSuccess(login_result);
                 }
             }
 
@@ -223,6 +230,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
         final String email = _emailText.getText().toString();
+        stdid = email;
         final String password = _passwordText.getText().toString();
 
         Log.d(TAG, "login: email"+email);
@@ -292,9 +300,56 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
-        finish();
+    public void onLoginSuccess(String login_result) {
+        try {
+            JSONObject result = new JSONObject(login_result);
+            String gender = result.getString("gender");
+            String grade = result.getString("grade");
+            String nickname = result.getString("nickname");
+            int num_answer = result.getInt("num_answer");
+            int num_collection = result.getInt("num_collection");
+            int num_follow = result.getInt("num_follow");
+            int num_posting = result.getInt("num_posting");
+            int num_view = result.getInt("num_view");
+            String signature = result.getString("signature");
+
+            Global.getInstance().gender = gender;
+            Global.getInstance().grade = grade;
+            Global.getInstance().nickname = nickname;
+            Global.getInstance().num_answer = num_answer;
+            Global.getInstance().num_collection = num_collection;
+            Global.getInstance().num_follow = num_follow;
+            Global.getInstance().num_posting = num_posting;
+            Global.getInstance().num_view = num_view;
+            Global.getInstance().signature = signature;
+
+            Global.getInstance().user_id =stdid;
+
+
+            ProfileItem[] personalItem = new ProfileItem[5];
+            personalItem[0] = new ProfileItem("ic_chat","我的发帖",valueOf(Global.getInstance().num_posting));
+            personalItem[1] = new ProfileItem("ic_create","我的回答",valueOf(Global.getInstance().num_answer));
+            personalItem[2] = new ProfileItem("ic_question_answer","我的关注",valueOf(Global.getInstance().num_follow));
+            personalItem[3] = new ProfileItem("ic_star","我的收藏",valueOf(Global.getInstance().num_collection));
+            personalItem[4] = new ProfileItem("ic_file","我的浏览",valueOf(Global.getInstance().num_view));
+
+            ProfileItem[] detailItem = new ProfileItem[4];
+            detailItem[0] = new ProfileItem("ic_person","昵称",Global.getInstance().nickname);
+            detailItem[1]=new ProfileItem("gender","性别",Global.getInstance().gender);
+            detailItem[2]=new ProfileItem("ic_schoo","年级",Global.getInstance().grade);
+            detailItem[3]=new ProfileItem("signing","个性签名",Global.getInstance().signature);
+
+            Global.getInstance().personalItem = personalItem;
+            Global.getInstance().detailItem = detailItem;
+
+            _loginButton.setEnabled(true);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            LoginActivity.this.finish();
+
+        }catch (Exception e){
+            Log.d(TAG, "onLoginSuccess: "+e.toString());
+        }
     }
 
     public void onLoginFailed(String errorText) {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/profile_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:text="liululu" />
+
+    <TextView
+        android:id="@+id/profile_sig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:text="一位热爱复旦的同学~" />
+
+    <com.gigamole.navigationtabstrip.NavigationTabStrip
+        android:id="@+id/navtabs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:nts_color="#fff"
+        app:nts_size="16sp"
+        app:nts_weight="5dp"
+        app:nts_factor="5"
+        app:nts_titles="@array/titles"
+        app:nts_type="line"
+        app:nts_gravity="bottom"
+        app:nts_corners_radius="1.5dp"
+        app:nts_animation_duration="300"
+        app:nts_active_color="#fff"
+        app:nts_inactive_color="#fddedede"/>
+
+    <LinearLayout
+        android:id="@+id/id_content"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navi_bottom"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/navi_main"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/navi_main"
+            android:textColor="#c1c1c1"
+            android:text="首页" />
+
+        <TextView
+            android:id="@+id/navi_my"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/navi_my"
+            android:gravity="center"
+            android:textColor="#7188C3"
+            android:text="我的" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/question_item"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="72dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/content_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="各种健身房器械的正确使用方法？"
+        android:layout_marginBottom="1dp"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:id="@+id/follow_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_grey"
+            android:textSize="14sp"
+            android:text="33 个关注"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_grey"
+            android:textSize="14sp"
+            android:text=" · "/>
+        <TextView
+            android:id="@+id/answer_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_grey"
+            android:textSize="14sp"
+            android:text="2 个回答"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
