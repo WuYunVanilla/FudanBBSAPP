@@ -1,0 +1,22 @@
+和吴芸的
+http://116.62.236.184:5000/add_question/  json[questioner, title, label, description, isPublished]
+http://116.62.236.184:5000/add_answer/    json[answerer, questionID, content, isPublished]
+http://116.62.236.184:5000/answers_list/?stdid=...&queid=1
+http://116.62.236.184:5000/answer_detail/?stdid=...&ansid=1
+http://116.62.236.184:5000/add_follow/?stdid=...&queid=...
+http://116.62.236.184:5000/add_agree/?stdid=...&ansid=...
+http://116.62.236.184:5000/add_collection/?stdid=...&ansid=...
+
+和方姐的
+http://116.62.236.184:5000/login/?stdid=15302010056&password=666666
+http://116.62.236.184:5000/modify/         json[]
+http://116.62.236.184:5000/posting/?stdid=15302010056
+http://116.62.236.184:5000/follow/?stdid=15302010056
+http://116.62.236.184:5000/view/?stdid=15302010056
+http://116.62.236.184:5000/answer/?stdid=15302010056
+http://116.62.236.184:5000/collection/?stdid=15302010056
+
+和袁莉萍的
+http://116.62.236.184:5000/homepage/
+http://116.62.236.184:5000/recommend/?stdid=15302010056
+http://116.62.236.184:5000/search/?keyword=......
