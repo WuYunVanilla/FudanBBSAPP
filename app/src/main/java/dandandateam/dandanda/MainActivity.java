@@ -50,8 +50,8 @@ public class MainActivity extends HttpActivity implements HotFragment.OnListHotF
     public void onListHotFragmentInteraction(MainQuestionList.MainQuestionItem item) {
         //TODO:wuyun
         Intent intent = new Intent();
-        intent.putExtra("question_id",item.ques_id );
-        intent.setClass(MainActivity.this, SearchActivity.class);
+        intent.putExtra("queid",item.ques_id );
+        intent.setClass(MainActivity.this, AnswersListActivity.class);
         startActivity(intent);
         MainActivity.this.finish();
     }
@@ -59,8 +59,8 @@ public class MainActivity extends HttpActivity implements HotFragment.OnListHotF
     public void onListRecommFragmentInteraction(MainQuestionList.MainQuestionItem item) {
         //TODO:wuyun
         Intent intent = new Intent();
-        intent.putExtra("question_id",item.ques_id );
-        intent.setClass(MainActivity.this, SearchActivity.class);
+        intent.putExtra("queid",item.ques_id );
+        intent.setClass(MainActivity.this, AnswersListActivity.class);
         startActivity(intent);
         MainActivity.this.finish();
     }
@@ -89,7 +89,7 @@ public class MainActivity extends HttpActivity implements HotFragment.OnListHotF
 
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, SearchActivity.class);
+                intent.setClass(MainActivity.this, AddQuestionActivity.class);
                 startActivity(intent);
                 MainActivity.this.finish();
             }

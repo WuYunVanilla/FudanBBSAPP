@@ -120,10 +120,10 @@ public class CollectionActivity extends AppCompatActivity {
                 Log.d(TAG, "onItemClick: question_id = "+question_id+" answer_id = " + answer_id);
 
                 //TODO:wuyun 我的收藏-跳转到-回答页面，传递了question_id 和 answer_id
-                /*Intent intent = new Intent(CollectionActivity.this,);
-                intent.putExtra("question_id",question_id);
-                intent.putExtra("answer_id",answer_id);
-                startActivity(intent);*/
+                Intent intent = new Intent(CollectionActivity.this,AnswerDetailActivity.class);
+                //intent.putExtra("queid",question_id);
+                intent.putExtra("ansid",answer_id+"");
+                startActivity(intent);
             }
         });
         mRecyclerView.setAdapter(mAdapter);

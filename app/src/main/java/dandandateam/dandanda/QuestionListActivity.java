@@ -1,5 +1,6 @@
 package dandandateam.dandanda;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -136,9 +137,9 @@ public class QuestionListActivity extends AppCompatActivity {
                 Log.d(TAG, "onItemClick: question_id = "+question_id);
 
                 //TODO:wuyun 我的关注/浏览-跳转到-问题详情页面，传递了question_id
-                /*Intent intent = new Intent(QuestionListActivity.this,);
-                intent.putExtra("question_id",question_id);
-                startActivity(intent);*/
+                Intent intent = new Intent(QuestionListActivity.this,AnswersListActivity.class);
+                intent.putExtra("queid",question_id+"");
+                startActivity(intent);
             }
         });
         mRecyclerView.setAdapter(mAdapter);

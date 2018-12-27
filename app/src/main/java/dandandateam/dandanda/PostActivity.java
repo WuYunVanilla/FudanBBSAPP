@@ -1,5 +1,6 @@
 package dandandateam.dandanda;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -147,15 +148,15 @@ public class PostActivity extends AppCompatActivity {
 
                 if(label.equals("我的发帖")){
                     //TODO:wuyun 我的发帖-跳转到-问题页面，传递了question_id
-                    /*Intent intent = new Intent(PostActivity.this,);
-                    intent.putExtra("question_id",question_id);
-                    startActivity(intent);*/
+                    Intent intent = new Intent(PostActivity.this,AnswersListActivity.class);
+                    intent.putExtra("queid",question_id+"");
+                    startActivity(intent);
                 }else{
                     //TODO:wuyun 我的回答-跳转到-回答页面，传递了question_id 和 answer_id
-                    /*Intent intent = new Intent(PostActivity.this,);
-                    intent.putExtra("question_id",question_id);
-                    intent.putExtra("answer_id",answer_id);
-                    startActivity(intent);*/
+                    Intent intent = new Intent(PostActivity.this,AnswerDetailActivity.class);
+                    //intent.putExtra("question_id",question_id);
+                    intent.putExtra("ansid",answer_id+"");
+                    startActivity(intent);
                 }
 
             }

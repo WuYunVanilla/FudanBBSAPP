@@ -28,10 +28,11 @@ public class SearchActivity extends HttpActivity implements SearchFragment.OnLis
 
     public void onListSearchFragmentInteraction(MainQuestionList.MainQuestionItem item) {
         //TODO:wuyun
+
         Log.d("click on search item", "la");
         Intent intent = new Intent();
-        intent.putExtra("question_id",item.ques_id );
-        intent.setClass(SearchActivity.this, MainActivity.class);
+        intent.putExtra("queid", item.ques_id);
+        intent.setClass(SearchActivity.this, AnswersListActivity.class);
         startActivity(intent);
         SearchActivity.this.finish();
     }

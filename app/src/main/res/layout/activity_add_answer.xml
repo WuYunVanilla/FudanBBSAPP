@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line" />
+
+    <TextView
+        android:id="@+id/post_title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/titleshape"
+        android:text="  输入你的回答 ："
+        android:textSize="25dp"
+        android:drawableBottom="@drawable/shape_et_bottom_line"
+        android:maxLength="15"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/line">
+
+        <EditText
+            android:id="@+id/add_answer_content"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_edittext"
+            android:hint="输入"
+            android:inputType="text"
+            android:maxLength="80"
+            android:maxLines="10"
+            android:textSize="20dp"
+            />
+
+
+        <Button
+            android:id="@+id/answer_btn_save_craft"
+
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:background="@drawable/buttonshape"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+
+            android:shadowColor="#7054A8"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
+            android:text="保存草稿"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/answer_btn_save"
+
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#7054A8"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
+            android:text="保存并发布"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

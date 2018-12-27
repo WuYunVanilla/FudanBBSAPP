@@ -24,11 +24,9 @@ import butterknife.ButterKnife;
 import dandandateam.dandanda.Items.ProfileItem;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import static java.lang.String.valueOf;
@@ -269,6 +267,7 @@ public class LoginActivity extends AppCompatActivity {
                     msg.setData(b);
                     LoginActivity.this.myHandler.sendMessage(msg);
 
+                    Global.getInstance().user_id = email;
                     progressDialog.dismiss();
 
 

@@ -22,6 +22,7 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Dark" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,6 +59,18 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".HttpActivity"></activity>
 
+        <activity
+            android:name=".AnswersListActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".AddAnswerActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".AnswerDetailActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".AddQuestionActivity"
+            android:theme="@style/AppTheme.Dark" />
     </application>
 
 </manifest>
