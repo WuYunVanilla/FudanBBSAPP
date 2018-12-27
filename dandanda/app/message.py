@@ -14,3 +14,8 @@ CONFIRM = "confirm_ok"
 # about question and answer
 ADD_QUESTION_OK = "add_question_ok"
 ADD_ANSWER_OK = "add_answer_ok"
+ADD_OK = "ok"
+
+
+# ablout user information
+MODIFY_OK = "modify_ok"
